@@ -81,7 +81,6 @@ export class SearchResultsComponent {
                 });
               }
             );
-
             if (filteredFlights.length > 0) {
               return {
                 ...itinerary,
