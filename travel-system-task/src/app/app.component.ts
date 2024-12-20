@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './components/search-for-flight/search-filter.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {  HttpClientModule } from '@angular/common/http';
+import { LanguageService } from './services/language/language.service';
 
 @Component({
   selector: 'app-root',
@@ -15,19 +16,16 @@ import {  HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'travel-system-task';
-
-  constructor(private translate: TranslateService) {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en'); 
+  currentLang! : string
+  constructor(private langService: LanguageService, private translate: TranslateService) {
+    this.translate.setDefaultLang(this.langService.language);
+    this.translate.use(this.langService.language);
   }
 
   toggleLanguage() {
-    const currentLang = this.translate.currentLang;
-    if (currentLang === 'en') {
-      this.translate.use('ar');
-    } else {
-      this.translate.use('en');
-    }
+    this.currentLang = this.langService.language === 'en' ? 'ar' : 'en';
+    this.langService.language = this.currentLang;
+    this.translate.use(this.currentLang); 
   }
 
   searchPerformed = false;

@@ -1,11 +1,11 @@
-<div>
+<div  [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
   <div class="row justify-content-start gap-2 my-4" style="margin-left: 2px">
     <div class="col-auto button active">
       <i class="fas fa-plane"></i> {{ "flights" | translate }}
     </div>
   </div>
 
-  <form [formGroup]="flightForm">
+  <form [formGroup]="flightForm" [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
     <div class="row g-1">
       <!-- Source Airport -->
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">

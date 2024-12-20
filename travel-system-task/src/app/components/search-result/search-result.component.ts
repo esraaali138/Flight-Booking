@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { FilterComponentComponent } from '../filter-component/filter-component.component';
-import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../../services/language/language.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search-result',
   standalone: true,
-  imports: [CommonModule, RouterModule, FilterComponentComponent],
+  imports: [CommonModule, RouterModule, FilterComponentComponent,TranslateModule],
   templateUrl: './search-result.component.html',
   styleUrl: './search-result.component.css',
 })
@@ -25,20 +26,27 @@ export class SearchResultsComponent {
   cabin: string = '';
   flightNumber!: string;
   noResultsMessage!: string;
-
+  currentLang: string = 'en';
   constructor(
     private route: ActivatedRoute,
     private flightService: FlightService,
-    private translate: TranslateService
+    private langService: LanguageService
+
     
   ) {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
+   
   }
 
 
 
   ngOnInit(): void {
+
+
+    this.langService.language$.subscribe((lang) => {
+      this.currentLang = lang;
+    });
+
+
     this.route.queryParams.subscribe((params) => {
       const source = params['source'] || '';
       const destination = params['destination'] || '';

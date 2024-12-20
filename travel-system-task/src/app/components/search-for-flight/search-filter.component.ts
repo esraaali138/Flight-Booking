@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FlightService } from '../../services/flight/flight.service';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../services/language/language.service';
 
 @Component({
   selector: 'app-search',
@@ -34,13 +35,23 @@ export class SearchComponent {
   selectedArrival: any;
   selectedCabinClass: any;
   searchPerformed = false;
+  currentLang: string = 'en';
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private flightService: FlightService
-  ) {}
+    private flightService: FlightService,
+    private langService: LanguageService
+    ) {
+
+  }
 
   ngOnInit() {
+
+    this.langService.language$.subscribe((lang) => {
+      this.currentLang = lang;
+    });
+
     this.flightService.getFlightData().subscribe((data) => {
       this.flightData = data;
     });

@@ -1,11 +1,11 @@
-<div *ngIf="filteredFlight">
+<div *ngIf="filteredFlight" [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
   <div class="container mt-4">
-    <h2 class="text-center text-blue mb-4">Flight Details</h2>
+    <h2 class="text-center text-blue mb-4">{{'Flight-Details' | translate}}</h2>
 
     <div class="row">
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Flight Number</h5>
+          <h5 class="card-title text-primary">{{'Flight-Number' | translate}}</h5>
           <p class="card-text font-weight-bold">
             {{
               filteredFlight.allJourney.flights[0].flightDTO[0].flightInfo
@@ -17,7 +17,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Departure Airport</h5>
+          <h5 class="card-title text-primary">{{'Departure-Airport' | translate}}</h5>
           <p class="card-text">
             {{
               filteredFlight.allJourney.flights[0]?.flightDTO[0]
@@ -29,7 +29,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Arrival Airport</h5>
+          <h5 class="card-title text-primary">{{'Arrival-Airport' | translate}}</h5>
           <p class="card-text">
             {{
               filteredFlight.allJourney.flights[0]?.flightDTO[0]
@@ -41,7 +41,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Airline</h5>
+          <h5 class="card-title text-primary">{{'Airline' | translate}}</h5>
           <p class="card-text">
             {{
               filteredFlight.allJourney.flights[0]?.flightDTO[0].flightAirline
@@ -53,7 +53,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Departure Time</h5>
+          <h5 class="card-title text-primary">{{'Departure-Time'|translate}}</h5>
           <p class="card-text">
             {{ filteredFlight.allJourney.flights[0]?.flightDTO[0].deptTime }}
           </p>
@@ -62,7 +62,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Arrival Time</h5>
+          <h5 class="card-title text-primary">{{'Arrival-Time'|translate}}</h5>
           <p class="card-text">
             {{ filteredFlight.allJourney.flights[0]?.flightDTO[0].landTime }}
           </p>
@@ -71,7 +71,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Departure Date</h5>
+          <h5 class="card-title text-primary">{{'Departure-Date'|translate}}</h5>
           <p class="card-text">
             {{
               filteredFlight.allJourney.flights[0]?.flightDTO[0].departureDate
@@ -83,7 +83,7 @@
 
       <div class="col-md-6 mb-3">
         <div class="card shadow-lg p-4 border-0">
-          <h5 class="card-title text-primary">Arrival Date</h5>
+          <h5 class="card-title text-primary">{{'Arrival-Date' | translate}}</h5>
           <p class="card-text">
             {{
               filteredFlight.allJourney.flights[0]?.flightDTO[0].arrivalDate
@@ -95,7 +95,7 @@
     </div>
 
     <div class="text-center mt-4 py-2">
-      <button class="btn bg-pink text-white btn-lg shadow-sm">Book Now</button>
+      <button class="btn bg-pink text-white btn-lg shadow-sm">{{'Book-Now' | translate}}</button>
     </div>
   </div>
 </div>

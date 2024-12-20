@@ -1,7 +1,7 @@
-<section class="bg-dark text-white">
+<section  [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'" class="bg-dark text-white">
   <header class="px-3 px-lg-5 py-3">
     <div class="row d-flex align-items-center">
-      <div class="logo col-12 col-md-6 d-flex align-items-center gap-2 w-50">
+      <div class="logo col-12 col-md-6 d-flex align-items-center gap-2 w-50" >
         <i class="fas fa-plane icon"></i>
         <span class="logo-text">FlyQuest</span>
       </div>
@@ -9,7 +9,7 @@
       <div
         class="col-12 col-md-6 d-flex justify-content-end align-items-center gap-3 w-50 flex-wrap"
       >
-        <div (click)="toggleLanguage()" class="language-item d-flex align-items-center gap-2">
+        <div (click)="toggleLanguage()" class="language-item d-flex align-items-center gap-2" >
           <i class="fas fa-globe"></i>
           <span class="d-none d-md-flex">{{'English' | translate}}</span>
         </div>

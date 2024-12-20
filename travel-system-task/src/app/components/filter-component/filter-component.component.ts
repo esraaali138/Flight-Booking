@@ -1,14 +1,17 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../../services/language/language.service';
+
 @Component({
   selector: 'app-filter-component',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,TranslateModule],
   templateUrl: './filter-component.component.html',
   styleUrls: ['./filter-component.component.css'],
 })
-export class FilterComponentComponent {
+export class FilterComponentComponent implements OnInit {
   @Output() filtersChanged = new EventEmitter<any>();
 
   airlines: string[] = [
@@ -32,7 +35,18 @@ export class FilterComponentComponent {
   maxPrice: number = 10000;
   airportName: string = '';
   hasArabicInput: boolean = false;
+  currentLang: string = 'en';
 
+
+  constructor(    private langService: LanguageService
+  ){}
+
+  ngOnInit(): void {
+    this.langService.language$.subscribe((lang) => {
+      this.currentLang = lang;
+    });
+
+  }
   onPriceChange() {
     this.emitFilters();
   }

@@ -13,32 +13,34 @@
   </div>
 </div>
 
-
-<div class="px-3 px-lg-5 py-5">
+<div
+  class="px-3 px-lg-5 py-5"
+  [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'"
+>
   <div class="row g-3">
     <div class="col-12 col-sm-6 col-lg-3">
-      <app-filter-component (filtersChanged)="onFilterChange($event)" *ngIf="flightCards.length > 0"></app-filter-component>
+      <app-filter-component
+        (filtersChanged)="onFilterChange($event)"
+        *ngIf="flightCards.length > 0"
+      ></app-filter-component>
     </div>
     <div style="cursor: pointer" class="col-12 col-sm-6 col-lg-9">
       <div class="row g-3">
         <div *ngIf="flightCards.length === 0" class="col-12">
           <div
             class="alert alert-warning text-center shadow-lg rounded-4 p-4"
-            style="position: relative; left: 20%"
           >
-            <h4 class="alert-heading">No Flights Match the Selected Filters</h4>
+            <h4 class="alert-heading">{{ "alert-search" | translate }}</h4>
             <p>
-              We apologize, but we couldn't find any flights that match your
-              search criteria. Please try adjusting the filters or try again
-              later.
+              {{ "alert-Search" | translate }}
             </p>
           </div>
         </div>
 
         <div *ngIf="noResultsMessage" class="alert alert-warning text-center">
-          {{noResultsMessage}}
-                </div>
-        
+          {{ 'no-results-message' | translate }}
+        </div>
+
         <div *ngIf="filteredFlights.length > 0" class="col-12">
           <div class="row g-3">
             <div
@@ -110,4 +112,3 @@
     </div>
   </div>
 </div>
-
