@@ -18,5 +18,5 @@ After performing the search, users will see the list of available flights. The u
 Once a flight is selected, users will be redirected to the **Flight Details Page** where they can view more information about the selected flight.
 
 ## **run** 
-**cd travel-system-task**
-**ng serve**
+-**cd travel-system-task**
+-**ng serve**
