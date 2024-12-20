@@ -31,6 +31,7 @@ export class FilterComponentComponent {
   minPrice: number = 3000;
   maxPrice: number = 10000;
   airportName: string = '';
+  hasArabicInput: boolean = false;
 
   onPriceChange() {
     this.emitFilters();
@@ -48,6 +49,14 @@ export class FilterComponentComponent {
   }
 
   onAirportChange(event: any) {
+
+    const arabicRegex = /[\u0600-\u06FF]/;
+    if (arabicRegex.test(event.target.value)) {
+      event.target.value = event.target.value.replace(arabicRegex, '');
+      this.hasArabicInput = true; 
+    } else {
+      this.hasArabicInput = false;
+    }
     this.airportName = event.target.value;
 
     this.emitFilters();

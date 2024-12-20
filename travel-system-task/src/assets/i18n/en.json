@@ -1,0 +1,19 @@
+{
+    "English": "English",
+    "Log-in": "Log in",
+    "Title-header": "Explore the Skies: Your Gateway to Hassle-Free Flight Booking",
+    "placeholder-source-airport": "Source Airport",
+    "placeholder-departure-date": "Departure Date",
+    "placeholder-destination-airport": "Destination Airport",
+    "placeholder-cabin-class": "Cabin Class",
+    "flights": "Flights",
+    "please-enter-source-airport": "Please enter a source airport.",
+    "please-enter-destination-airport": "Please enter a destination airport.",
+    "please-select-cabin-class": "Please select a cabin class.",
+    "search": "Search",
+    "departure-date": "Departure Date",
+    "source-airport": "Source Airport",
+    "destination-airport": "Destination Airport",
+    "cabin-class":"cabinClass"
+  }
+  

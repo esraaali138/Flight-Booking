@@ -62,7 +62,11 @@
         class="form-control"
         placeholder="Enter Airport Name"
         (input)="onAirportChange($event)"
+
       />
+      <div *ngIf="hasArabicInput" class="alert alert-warning">
+        Arabic characters are not allowed.
+      </div>
     </div>
   </div>
 </div>

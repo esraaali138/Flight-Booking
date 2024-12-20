@@ -1,0 +1,19 @@
+{
+    "English": "العربيه",
+    "Log-in": "تسجيل الدخول",
+    "Title-header": "استكشف السماء: بوابتك للحجز السهل للطيران",
+    "placeholder-source-airport": "مطار المغادرة",
+    "placeholder-departure-date": "تاريخ المغادرة",
+    "placeholder-destination-airport": "مطار الوصول",
+    "placeholder-cabin-class": "درجة المقصورة",
+    "flights": "الرحلات",
+    "please-enter-source-airport": "من فضلك أدخل مطار المغادرة",
+    "please-enter-destination-airport": "من فضلك أدخل مطار الوصول",
+    "please-select-cabin-class": "من فضلك اختر درجة المقصورة",
+    "search": "بحث",
+    "departure-date": "تاريخ المغادرة",
+    "source-airport": "مطار المغادرة",
+    "destination-airport": "مطار الوصول",
+    "cabin-class":"درجة المقصورة"
+  }
+  

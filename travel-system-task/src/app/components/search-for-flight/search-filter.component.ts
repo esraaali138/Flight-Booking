@@ -10,11 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FlightService } from '../../services/flight/flight.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule , TranslateModule],
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.css'],
 })

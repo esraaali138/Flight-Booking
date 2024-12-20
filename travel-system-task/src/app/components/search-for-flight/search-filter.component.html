@@ -1,7 +1,7 @@
 <div>
   <div class="row justify-content-start gap-2 my-4" style="margin-left: 2px">
     <div class="col-auto button active">
-      <i class="fas fa-plane"></i> Flights
+      <i class="fas fa-plane"></i> {{ "flights" | translate }}
     </div>
   </div>
 
@@ -16,17 +16,17 @@
             class="form-control"
             autocomplete="off"
             formControlName="sourceAirport"
-            placeholder="Source Airport"
+            placeholder="{{ 'placeholder-source-airport' | translate }}"
             (focus)="toggleDropdown('source', true)"
             (blur)="toggleDropdown('source', true)"
             (ngModelChange)="onSourceSearchChange()"
           />
-          <label for="sourceAirport">Source Airport</label>
+          <label for="sourceAirport">{{ "source-airport" | translate }}</label>
           <div
             *ngIf="submitted && flightForm.get('sourceAirport')?.invalid"
             class="text-danger fw-bold"
           >
-            Please enter a source airport.
+            {{ "please-enter-source-airport" | translate }}
           </div>
         </div>
       </div>
@@ -40,17 +40,19 @@
             class="form-control"
             autocomplete="off"
             formControlName="destinationAirport"
-            placeholder="Destination Airport"
+            placeholder="{{ 'placeholder-destination-airport' | translate }}"
             (focus)="toggleDropdown('destination', true)"
             (blur)="toggleDropdown('destination', true)"
             (ngModelChange)="onDestinationSearchChange()"
           />
-          <label for="destinationAirport">Destination Airport</label>
+          <label for="destinationAirport">{{
+            "destination-airport" | translate
+          }}</label>
           <div
             *ngIf="submitted && flightForm.get('destinationAirport')?.invalid"
             class="text-danger fw-bold"
           >
-            Please enter a destination airport.
+            {{ "please-enter-destination-airport" | translate }}
           </div>
         </div>
       </div>
@@ -63,9 +65,9 @@
             type="date"
             class="form-control"
             formControlName="departureDate"
-            placeholder="Departure Date"
+            placeholder="{{ 'placeholder-departure-date' | translate }}"
           />
-          <label for="departureDate">Departure Date</label>
+          <label for="departureDate">{{ "departure-date" | translate }}</label>
         </div>
       </div>
 
@@ -77,18 +79,18 @@
             type="text"
             class="form-control"
             formControlName="cabinClass"
-            placeholder="cabinClass"
+            placeholder="{{ 'placeholder-cabin-class' | translate }}"
             autocomplete="off"
             (focus)="toggleDropdown('cabin', true)"
             (blur)="toggleDropdown('cabin', true)"
             (ngModelChange)="onCabinClassSearchChange()"
           />
-          <label for="cabinClass">cabinClass</label>
+          <label for="cabinClass">{{ "cabin-class" | translate }}</label>
           <div
             *ngIf="submitted && flightForm.get('cabinClass')?.invalid"
             class="text-danger fw-bold"
           >
-            Please select a cabinClass.
+            {{ "please-select-cabin-class" | translate }}
           </div>
         </div>
       </div>
@@ -100,40 +102,40 @@
           class="btn btn-pink w-100"
           style="height: 60px"
         >
-          Search
+          {{ "search" | translate }}
         </button>
       </div>
     </div>
   </form>
 
+  <!-- dropdowns -->
   <div
-  *ngIf="dropdownVisibleSource && filteredSourceFlights.length > 0"
-  class="dropdown-menu menu-source col-12 col-sm-12 col-md-8 col-lg-4"
->
-  <div *ngFor="let airportName of filteredSourceFlights" class="dropdown-item px-5 px-5">
-    <p
-      (click)="setSource(airportName)"
-      class="drop-text py-2"
+    *ngIf="dropdownVisibleSource && filteredSourceFlights.length > 0"
+    class="dropdown-menu menu-source col-12 col-sm-12 col-md-8 col-lg-4"
+  >
+    <div
+      *ngFor="let airportName of filteredSourceFlights"
+      class="dropdown-item px-5 px-5"
     >
-      {{ airportName }}
-    </p>
+      <p (click)="setSource(airportName)" class="drop-text py-2">
+        {{ airportName }}
+      </p>
+    </div>
   </div>
-</div>
-
 
   <div
-  *ngIf="dropdownVisibleDestination && filteredDestinationFlights.length > 0"
-  class="dropdown-menu menu-arrival col-12 col-sm-12 col-md-8 col-lg-4"
->
-  <div *ngFor="let airportName of filteredDestinationFlights" class="dropdown-item px-5 px-5">
-    <p
-      (click)="setArrival(airportName)"
-      class="drop-text py-2"
+    *ngIf="dropdownVisibleDestination && filteredDestinationFlights.length > 0"
+    class="dropdown-menu menu-arrival col-12 col-sm-12 col-md-8 col-lg-4"
+  >
+    <div
+      *ngFor="let airportName of filteredDestinationFlights"
+      class="dropdown-item px-5 px-5"
     >
-      {{ airportName }}
-    </p>
+      <p (click)="setArrival(airportName)" class="drop-text py-2">
+        {{ airportName }}
+      </p>
+    </div>
   </div>
-</div>
 
   <div
     *ngIf="dropdownVisibleCabin && filteredCabinFlights.length > 0"

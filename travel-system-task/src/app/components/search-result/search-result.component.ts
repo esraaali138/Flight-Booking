@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { FilterComponentComponent } from '../filter-component/filter-component.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search-result',
@@ -27,8 +28,15 @@ export class SearchResultsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private flightService: FlightService
-  ) {}
+    private flightService: FlightService,
+    private translate: TranslateService
+    
+  ) {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
+  }
+
+
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -135,7 +143,7 @@ export class SearchResultsComponent {
           .toLowerCase()
           .includes(filters.airportName.toLowerCase());
 
-      return matchesPrice && matchesAirline && matchesAirport;
+      return matchesAirline && matchesAirport && matchesPrice;
     });
 
     if (this.filteredFlights.length === 0) {

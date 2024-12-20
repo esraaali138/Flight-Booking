@@ -9,20 +9,20 @@
       <div
         class="col-12 col-md-6 d-flex justify-content-end align-items-center gap-3 w-50 flex-wrap"
       >
-        <div class="language-item d-flex align-items-center gap-2">
+        <div (click)="toggleLanguage()" class="language-item d-flex align-items-center gap-2">
           <i class="fas fa-globe"></i>
-          <span class="d-none d-md-flex">English</span>
+          <span class="d-none d-md-flex">{{'English' | translate}}</span>
         </div>
         <div class="language-item d-flex align-items-center gap-2">
           <i class="fas fa-sign-in-alt"></i>
-          <span class="d-none d-md-flex">Log in</span>
+          <span class="d-none d-md-flex">{{'Log-in' | translate}}</span>
         </div>
       </div>
     </div>
   </header>
   <main class="text-center mt-5 px-3 px-lg-5 py-5">
     <h1 class="" style="font-size: 1.5rem">
-      Explore the Skies: Your Gateway to Hassle-Free Flight Booking
+      {{'Title-header' | translate}}
         </h1>
   </main>
 </section>
