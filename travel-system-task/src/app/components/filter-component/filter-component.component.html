@@ -1,0 +1,68 @@
+<div class="card h-100 border-0">
+  <div class="p-3">
+    <h5 class="mb-0">Filter by</h5>
+  </div>
+  <div class="mt-5 p-3">
+    <div class="mb-4">
+      <label for="priceRange" class="form-label"><strong>Price</strong></label>
+      <div class="d-flex justify-content-between mb-2">
+        <span id="minPriceDisplay">{{ minPrice }} EGP</span>
+        <span id="maxPriceDisplay">{{ maxPrice }} EGP</span>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <input
+          type="range"
+          id="minPrice"
+          class="form-range"
+          min="3000"
+          max="10000"
+          step="10"
+          value="3000"
+          [(ngModel)]="minPrice"
+          (ngModelChange)="onPriceChange()"
+        />
+        <input
+          type="range"
+          id="maxPrice"
+          class="form-range"
+          min="3000"
+          max="10000"
+          step="10"
+          value="10000"
+          [(ngModel)]="maxPrice"
+          (ngModelChange)="onPriceChange()"
+        />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <p>Airlines</p>
+      <div
+        *ngFor="let airline of airlines"
+        class="d-flex align-items-center py-2"
+      >
+        <input
+          type="checkbox"
+          id="{{ airline }}"
+          name="airline"
+          (change)="onAirlineChange($event, airline)"
+        />
+        <label for="{{ airline }}" class="ms-2">{{ airline }}</label>
+      </div>
+    </div>
+
+    <div>
+      <label for="airportFilter" class="form-label"
+        ><strong>Airport Name</strong></label
+      >
+      <input
+        type="text"
+        id="airportFilter"
+        class="form-control"
+        placeholder="Enter Airport Name"
+        (input)="onAirportChange($event)"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+.btn-pink {
+  background-color: #d36bb0;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-pink {
+  background-color: #d36bb0;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-pink:hover {
+  background-color: #c35b91;
+}
+
+.form-floating input {
+  height: 60px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.form-floating label {
+  color: #aaa;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+  color: #d36bb0;
+  transform: translateY(-20px);
+  font-size: 14px;
+}
+
+.button {
+  border: 1px solid white;
+  background-color: transparent;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.button.active {
+  background-color: #d36bb0;
+  border: 0;
+}
+
+.button.hotels:hover {
+  background-color: #b45795;
+}
+
+.button i {
+  margin-right: 8px;
+}
+
+.dropdown-menu {
+  display: block;
+  overflow-y: auto;
+  position: relative;
+}
+.menu-cabin {
+  left: 65%;
+
+}
+.menu-arrival {
+  left: 25%;
+}
+.menu-source{
+  left: 0;
+}
+.drop-text {
+  cursor: pointer;
+}
+.dropdown-item:hover {
+  background-color: #c35b91;
+}
+
+@media (max-width: 768px) {
+  .menu-arrival , .menu-cabin  {
+    left: 0 !important;
+  }
+
+}

@@ -1,0 +1,113 @@
+<div
+  class="d-flex align-items-center justify-content-center gap-2 bg-primary text-white p-3"
+  style="height: 50px"
+>
+  <div class="d-flex align-items-center">
+    <i class="fas fa-search"></i>
+  </div>
+
+  <div class="d-flex gap-1">
+    <p class="mb-0">{{ source }} -</p>
+    <p class="mb-0">{{ destination }},</p>
+    <p class="mb-0">{{ cabin }}</p>
+  </div>
+</div>
+
+
+<div class="px-3 px-lg-5 py-5">
+  <div class="row g-3">
+    <div class="col-12 col-sm-6 col-lg-3">
+      <app-filter-component (filtersChanged)="onFilterChange($event)" *ngIf="flightCards.length > 0"></app-filter-component>
+    </div>
+    <div style="cursor: pointer" class="col-12 col-sm-6 col-lg-9">
+      <div class="row g-3">
+        <div *ngIf="flightCards.length === 0" class="col-12">
+          <div
+            class="alert alert-warning text-center shadow-lg rounded-4 p-4"
+            style="position: relative; left: 20%"
+          >
+            <h4 class="alert-heading">No Flights Match the Selected Filters</h4>
+            <p>
+              We apologize, but we couldn't find any flights that match your
+              search criteria. Please try adjusting the filters or try again
+              later.
+            </p>
+          </div>
+        </div>
+
+        <div *ngIf="noResultsMessage" class="alert alert-warning text-center">
+          {{noResultsMessage}}
+                </div>
+        
+        <div *ngIf="filteredFlights.length > 0" class="col-12">
+          <div class="row g-3">
+            <div
+              class="col-12 col-sm-12 col-lg-6"
+              *ngFor="let card of flightCards"
+            >
+              <div
+                [routerLink]="['/flight-details', card.flightNumber]"
+                class="card h-100 shadow-lg border-0 rounded-4 pointer"
+              >
+                <div
+                  class="card-img-top"
+                  style="
+                    background-image: url('assets/images/8e37f431-5f24-4a1d-8f0d-7168568f3fa7-1400.jpg');
+                    height: 200px;
+                    background-size: cover;
+                    background-position: center;
+                  "
+                ></div>
+                <div
+                  class="card-body d-flex flex-column justify-content-center gap-3"
+                >
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="d-flex align-items-center">
+                      <img
+                        src="{{ card.airlineLogo }}"
+                        style="width: 20px; height: auto; margin-right: 10px"
+                      />
+                      <p class="card-text mb-0 fw-bold">
+                        {{ card.airlineName }}
+                      </p>
+                    </div>
+                    <p class="card-text mb-0 fw-bold text-blue">
+                      {{ card.price | number : "1.0-0" }} EGP
+                    </p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <p class="card-text mb-0 fw-bold">
+                      <i class="fas fa-plane-arrival text-pink"></i>
+                      {{ card.arrivalAirport }}
+                    </p>
+                    <p class="card-text mb-0 fw-bold text-blue">
+                      {{ card.departureDate | date : "MM/dd" }}
+                    </p>
+                  </div>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <p class="card-text mb-0 fw-bold">
+                      <i class="fas fa-plane-departure text-pink"></i>
+                      {{ card.departureAirport }}
+                    </p>
+                    <p class="card-text mb-0 fw-bold text-blue">
+                      {{ card.cabinClass }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
