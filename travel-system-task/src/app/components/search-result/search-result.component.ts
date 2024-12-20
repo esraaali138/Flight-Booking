@@ -75,6 +75,7 @@ export class SearchResultsComponent {
                         ?.toLowerCase()
                         .includes(cabin.toLowerCase())
                     : true;
+                    // 
 
                   return matchesSource && matchesDestination && matchesCabin;
                 });
