@@ -13,7 +13,6 @@ import { FlightService } from '../../services/flight/flight.service';
 
 @Component({
   selector: 'app-search',
-  //location-search-component
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, FormsModule, HttpClientModule],
   templateUrl: './search-filter.component.html',
