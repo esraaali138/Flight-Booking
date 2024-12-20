@@ -8,7 +8,7 @@ import { LanguageService } from '../../services/language/language.service';
 @Component({
   selector: 'app-flight-details',
   standalone: true,
-  imports: [CommonModule,TranslateModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './flight-details.component.html',
   styleUrls: ['./flight-details.component.css'],
 })
@@ -22,7 +22,6 @@ export class FlightDetailsComponent {
     private route: ActivatedRoute,
     private flightService: FlightService,
     private langService: LanguageService
-
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +30,12 @@ export class FlightDetailsComponent {
     });
 
     this.flightNumber = this.route.snapshot.paramMap.get('flightNumber') || '';
-    this.fetchFlightData();
+    const storedFlight = localStorage.getItem('selectedFlight');
+    if (storedFlight) {
+      this.filteredFlight = JSON.parse(storedFlight);
+    } else {
+      this.fetchFlightData();
+    }
   }
 
   fetchFlightData(): void {
@@ -45,12 +49,13 @@ export class FlightDetailsComponent {
           });
         });
       });
+
+      if (this.filteredFlight) {
+        localStorage.setItem(
+          'selectedFlight',
+          JSON.stringify(this.filteredFlight)
+        );
+      }
     });
   }
 }
-
-
-
-
-
-
