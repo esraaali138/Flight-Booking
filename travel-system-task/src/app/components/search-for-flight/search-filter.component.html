@@ -1,11 +1,14 @@
-<div  [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+<div [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
   <div class="row justify-content-start gap-2 my-4" style="margin-left: 2px">
     <div class="col-auto button active">
       <i class="fas fa-plane"></i> {{ "flights" | translate }}
     </div>
   </div>
 
-  <form [formGroup]="flightForm" [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+  <form
+    [formGroup]="flightForm"
+    [attr.dir]="currentLang === 'ar' ? 'rtl' : 'ltr'"
+  >
     <div class="row g-1">
       <!-- Source Airport -->
       <div class="col-12 col-sm-12 col-md-3 col-lg-3">
@@ -27,6 +30,21 @@
             class="text-danger fw-bold"
           >
             {{ "please-enter-source-airport" | translate }}
+          </div>
+        </div>
+        <!-- dropd-Source -->
+        <div
+          *ngIf="dropdownVisibleSource && filteredSourceFlights.length > 0"
+          class="dropdown-menu overflow-hidden"
+          style="width: 450px"
+        >
+          <div
+            *ngFor="let airportName of filteredSourceFlights"
+            class="dropdown-item px-5"
+          >
+            <p (click)="setSource(airportName)" class="drop-text py-2">
+              {{ airportName }}
+            </p>
           </div>
         </div>
       </div>
@@ -53,6 +71,23 @@
             class="text-danger fw-bold"
           >
             {{ "please-enter-destination-airport" | translate }}
+          </div>
+        </div>
+        <!-- dropdown-destenation -->
+        <div
+          *ngIf="
+            dropdownVisibleDestination && filteredDestinationFlights.length > 0
+          "
+          class="dropdown-menu overflow-hidden"
+          style="width: 450px"
+        >
+          <div
+            *ngFor="let airportName of filteredDestinationFlights"
+            class="dropdown-item px-5"
+          >
+            <p (click)="setArrival(airportName)" class="drop-text py-2">
+              {{ airportName }}
+            </p>
           </div>
         </div>
       </div>
@@ -93,13 +128,28 @@
             {{ "please-select-cabin-class" | translate }}
           </div>
         </div>
+        <!-- dropsown-cabinClass -->
+        <div
+          *ngIf="dropdownVisibleCabin && filteredCabinFlights.length > 0"
+          class="dropdown-menu overflow-hidden"
+          style="width: 180px"
+        >
+          <div
+            *ngFor="let cabinClass of filteredCabinFlights"
+            class="dropdown-item px-5"
+          >
+            <p (click)="setCabinClass(cabinClass)" class="drop-text py-2">
+              {{ cabinClass }}
+            </p>
+          </div>
+        </div>
       </div>
 
       <div class="col-12 col-sm-12 col-md-1 col-lg-2">
         <button
           (click)="onSearch()"
           type="submit"
-          class="btn btn-pink w-100"
+          class="btn btn-pink w-100 px-1"
           style="height: 60px"
         >
           {{ "search" | translate }}
@@ -107,47 +157,4 @@
       </div>
     </div>
   </form>
-
-  <!-- dropdowns -->
-  <div
-    *ngIf="dropdownVisibleSource && filteredSourceFlights.length > 0"
-    class="dropdown-menu menu-source col-12 col-sm-12 col-md-8 col-lg-4"
-  >
-    <div
-      *ngFor="let airportName of filteredSourceFlights"
-      class="dropdown-item px-5 px-5"
-    >
-      <p (click)="setSource(airportName)" class="drop-text py-2">
-        {{ airportName }}
-      </p>
-    </div>
-  </div>
-
-  <div
-    *ngIf="dropdownVisibleDestination && filteredDestinationFlights.length > 0"
-    class="dropdown-menu menu-arrival col-12 col-sm-12 col-md-8 col-lg-4"
-  >
-    <div
-      *ngFor="let airportName of filteredDestinationFlights"
-      class="dropdown-item px-5 px-5"
-    >
-      <p (click)="setArrival(airportName)" class="drop-text py-2">
-        {{ airportName }}
-      </p>
-    </div>
-  </div>
-
-  <div
-    *ngIf="dropdownVisibleCabin && filteredCabinFlights.length > 0"
-    class="dropdown-menu menu-cabin col-12 col-sm-12 col-md-3 col-lg-3"
-  >
-    <div
-      *ngFor="let cabinClass of filteredCabinFlights"
-      class="dropdown-item px-5 px-5"
-    >
-      <p (click)="setCabinClass(cabinClass)" class="drop-text py-2">
-        {{ cabinClass }}
-      </p>
-    </div>
-  </div>
 </div>

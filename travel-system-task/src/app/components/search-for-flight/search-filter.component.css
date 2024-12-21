@@ -62,19 +62,13 @@
 
 .dropdown-menu {
   display: block;
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  overflow-x: hidden !important;
+
   position: relative;
 }
-.menu-cabin {
-  left: 65%;
 
-}
-.menu-arrival {
-  left: 25%;
-}
-.menu-source{
-  left: 0;
-}
+
 .drop-text {
   cursor: pointer;
 }
@@ -82,9 +76,4 @@
   background-color: #c35b91;
 }
 
-@media (max-width: 768px) {
-  .menu-arrival , .menu-cabin  {
-    left: 0 !important;
-  }
 
-}
